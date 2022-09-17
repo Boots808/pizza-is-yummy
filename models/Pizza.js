@@ -16,6 +16,11 @@ const PizzaSchema = new Schema({
     default: "Large",
   },
   toppings: [],
+  comments: [
+    {
+      type: String,
+    },
+  ],
 });
 
 const Pizza = model("Pizza", PizzaSchema);
