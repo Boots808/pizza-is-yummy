@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const $addToppingBtn = document.querySelector("#add-topping");
 const $pizzaForm = document.querySelector("#pizza-form");
 const $customToppingsList = document.querySelector("#custom-toppings-list");
@@ -6,11 +7,22 @@ const handleAddTopping = (event) => {
   event.preventDefault();
 
   const toppingValue = document.querySelector("#new-topping").value;
+=======
+const $addToppingBtn = document.querySelector('#add-topping');
+const $pizzaForm = document.querySelector('#pizza-form');
+const $customToppingsList = document.querySelector('#custom-toppings-list');
+
+const handleAddTopping = event => {
+  event.preventDefault();
+
+  const toppingValue = document.querySelector('#new-topping').value;
+>>>>>>> feature
 
   if (!toppingValue) {
     return false;
   }
 
+<<<<<<< HEAD
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.name = "topping";
@@ -22,11 +34,31 @@ const handleAddTopping = (event) => {
   label.htmlFor = toppingValue.toLowerCase().split(" ").join("-");
 
   const divWrapper = document.createElement("div");
+=======
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.name = 'topping';
+  checkbox.value = toppingValue;
+  checkbox.id = toppingValue
+    .toLowerCase()
+    .split(' ')
+    .join('-');
+
+  const label = document.createElement('label');
+  label.textContent = toppingValue;
+  label.htmlFor = toppingValue
+    .toLowerCase()
+    .split(' ')
+    .join('-');
+
+  const divWrapper = document.createElement('div');
+>>>>>>> feature
 
   divWrapper.appendChild(checkbox);
   divWrapper.appendChild(label);
   $customToppingsList.appendChild(divWrapper);
 
+<<<<<<< HEAD
   toppingValue.value = "";
 };
 
@@ -40,6 +72,18 @@ const handlePizzaSubmit = (event) => {
   const toppings = [
     ...$pizzaForm.querySelectorAll("[name=topping]:checked"),
   ].map((topping) => {
+=======
+  toppingValue.value = '';
+};
+
+const handlePizzaSubmit = event => {
+  event.preventDefault();
+
+  const pizzaName = $pizzaForm.querySelector('#pizza-name').value;
+  const createdBy = $pizzaForm.querySelector('#created-by').value;
+  const size = $pizzaForm.querySelector('#pizza-size').value;
+  const toppings = [...$pizzaForm.querySelectorAll('[name=topping]:checked')].map(topping => {
+>>>>>>> feature
     return topping.value;
   });
 
@@ -49,6 +93,7 @@ const handlePizzaSubmit = (event) => {
 
   const formData = { pizzaName, createdBy, size, toppings };
 
+<<<<<<< HEAD
   fetch("/api/pizzas", {
     method: "POST",
     headers: {
@@ -63,9 +108,30 @@ const handlePizzaSubmit = (event) => {
       console.log(postResponse);
     })
     .catch((err) => {
+=======
+  fetch('/api/pizzas', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+    .then(response => response.json())
+    .then(postResponse => {
+      alert('Pizza created successfully!');
+      console.log(postResponse);
+    })
+    .catch(err => {
+>>>>>>> feature
       console.log(err);
     });
 };
 
+<<<<<<< HEAD
 $pizzaForm.addEventListener("submit", handlePizzaSubmit);
 $addToppingBtn.addEventListener("click", handleAddTopping);
+=======
+$pizzaForm.addEventListener('submit', handlePizzaSubmit);
+$addToppingBtn.addEventListener('click', handleAddTopping);
+>>>>>>> feature
