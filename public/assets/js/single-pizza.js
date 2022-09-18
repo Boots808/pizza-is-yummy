@@ -9,8 +9,6 @@ const $newCommentForm = document.querySelector('#new-comment-form');
 
 let pizzaId;
 
-<<<<<<< HEAD
-=======
 function getPizza() {
   // get id of pizza
   const searchParams = new URLSearchParams(document.location.search.substring(1));
@@ -35,7 +33,6 @@ function getPizza() {
     });
 }
 
->>>>>>> feature
 function printPizza(pizzaData) {
   console.log(pizzaData);
 
@@ -114,8 +111,6 @@ function handleNewCommentSubmit(event) {
   }
 
   const formData = { commentBody, writtenBy };
-<<<<<<< HEAD
-=======
 
   fetch(`/api/comments/${pizzaId}`, {
     method: 'POST',
@@ -138,7 +133,6 @@ function handleNewCommentSubmit(event) {
     .catch(err => {
       console.log(err);
     });
->>>>>>> feature
 }
 
 function handleNewReplySubmit(event) {
@@ -158,8 +152,6 @@ function handleNewReplySubmit(event) {
   }
 
   const formData = { writtenBy, replyBody };
-<<<<<<< HEAD
-=======
 
   fetch(`/api/comments/${pizzaId}/${commentId}`, {
     method: 'PUT',
@@ -182,7 +174,6 @@ function handleNewReplySubmit(event) {
     .catch(err => {
       console.log(err);
     });
->>>>>>> feature
 }
 
 $backBtn.addEventListener('click', function() {
@@ -191,8 +182,5 @@ $backBtn.addEventListener('click', function() {
 
 $newCommentForm.addEventListener('submit', handleNewCommentSubmit);
 $commentSection.addEventListener('submit', handleNewReplySubmit);
-<<<<<<< HEAD
-=======
 
 getPizza();
->>>>>>> feature

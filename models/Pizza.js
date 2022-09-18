@@ -1,36 +1,17 @@
-<<<<<<< HEAD
-const { Schema, model } = require("mongoose");
-
-const PizzaSchema = new Schema({
-  pizzaName: {
-    type: String,
-  },
-  createdBy: {
-    type: String,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  size: {
-    type: String,
-    default: "Large",
-  },
-  toppings: [],
-});
-
-const Pizza = model("Pizza", PizzaSchema);
-=======
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const PizzaSchema = new Schema(
   {
     pizzaName: {
-      type: String
+      type: String,
+      required: true,
+      trim: true
     },
     createdBy: {
-      type: String
+      type: String,
+      required: true,
+      trim: true
     },
     createdAt: {
       type: Date,
@@ -39,6 +20,8 @@ const PizzaSchema = new Schema(
     },
     size: {
       type: String,
+      required: true,
+      enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
       default: 'Large'
     },
     toppings: [],
@@ -68,6 +51,5 @@ PizzaSchema.virtual('commentCount').get(function() {
 });
 
 const Pizza = model('Pizza', PizzaSchema);
->>>>>>> feature
 
 module.exports = Pizza;
